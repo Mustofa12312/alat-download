@@ -5,6 +5,8 @@ mod commands;
 mod download_engine;
 mod intelligence;
 pub mod events;
+pub mod video_engine;
+pub mod torrent_engine;
 
 use tauri::Manager;
 

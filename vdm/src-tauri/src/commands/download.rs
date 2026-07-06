@@ -10,13 +10,20 @@ pub struct CommandResponse<T> {
 }
 
 #[tauri::command]
-pub async fn start_download(url: String, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
-    // Placeholder logic
-    Ok(CommandResponse {
-        success: true,
-        data: Some(format!("Started downloading: {}", url)),
-        message: None,
-    })
+pub async fn start_download(url: String, pool: State<'_, SqlitePool>) -> Result<CommandResponse<i32>, String> {
+    // Basic fallback values for scaffold. Usually these come from the URL Analyzer.
+    let file_name = "downloaded_file.tmp";
+    let file_path = format!("/tmp/{}", file_name);
+    let total_size = 0; // Unknown at this stage
+
+    match crate::database::repository::DownloadRepository::create_download(&pool, &url, file_name, &file_path, total_size).await {
+        Ok(id) => Ok(CommandResponse {
+            success: true,
+            data: Some(id),
+            message: Some("Download inserted to database successfully".into()),
+        }),
+        Err(e) => Err(format!("Database error: {}", e)),
+    }
 }
 
 #[tauri::command]

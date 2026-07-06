@@ -15,6 +15,7 @@ pub fn get_handlers() -> impl Fn(tauri::ipc::Invoke) -> bool {
         download::restart_download,
         download::delete_download,
         download::verify_download,
+        download::analyze_video,
         
         queue::add_to_queue,
         queue::remove_from_queue,
