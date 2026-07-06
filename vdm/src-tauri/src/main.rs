@@ -1,17 +1,19 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-mod database;
 mod commands;
+mod database;
 mod download_engine;
-mod intelligence;
 pub mod events;
-pub mod video_engine;
+mod intelligence;
 pub mod torrent_engine;
+pub mod video_engine;
 
 use tauri::Manager;
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_global_shortcut::Builder::new().build())
+        .plugin(tauri_plugin_notification::init())
         .setup(|app| {
             let handle = app.handle().clone();
             tauri::async_runtime::spawn(async move {

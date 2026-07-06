@@ -22,14 +22,18 @@ impl SegmentManager {
         let min_segment_size = 1024 * 1024; // 1 MB min segment
         let actual_connections = if total_size / (num_connections as u64) < min_segment_size {
             let max_conn = (total_size / min_segment_size) as u32;
-            if max_conn > 0 { max_conn } else { 1 }
+            if max_conn > 0 {
+                max_conn
+            } else {
+                1
+            }
         } else {
             num_connections
         };
 
         let mut segments = Vec::new();
         let segment_size = total_size / (actual_connections as u64);
-        
+
         for i in 0..actual_connections {
             let start = (i as u64) * segment_size;
             let end = if i == actual_connections - 1 {

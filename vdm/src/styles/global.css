@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #F9FAFB;
+  --surface: #FFFFFF;
+  --border: #E5E7EB;
+  --primary: #4A90FA;
+  --secondary: #7C5FDC;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --textPrimary: #111827;
+  --textSecondary: #6B7280;
+}
+
+:root.dark {
+  --background: #0F0F11;
+  --surface: #1A1A1F;
+  --border: #2A2A35;
+  --primary: #4A90FA;
+  --secondary: #7C5FDC;
+  --success: #34D399;
+  --warning: #FBBF24;
+  --error: #F87171;
+  --textPrimary: #F0F0F5;
+  --textSecondary: #8A8A9A;
+}
+
 @layer base {
   body {
     @apply bg-background text-textPrimary font-sans;

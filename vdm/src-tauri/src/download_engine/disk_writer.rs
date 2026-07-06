@@ -38,11 +38,11 @@ impl DiskWriter {
         file.seek(SeekFrom::Start(offset))
             .await
             .map_err(|e| format!("Failed to seek to offset {}: {}", offset, e))?;
-            
+
         file.write_all(data)
             .await
             .map_err(|e| format!("Failed to write data at offset {}: {}", offset, e))?;
-            
+
         Ok(())
     }
 }

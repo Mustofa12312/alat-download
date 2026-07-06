@@ -1,6 +1,6 @@
-use tauri::State;
-use sqlx::SqlitePool;
 use serde::{Deserialize, Serialize};
+use sqlx::SqlitePool;
+use tauri::State;
 
 #[derive(Serialize)]
 pub struct CommandResponse<T> {
@@ -10,13 +10,20 @@ pub struct CommandResponse<T> {
 }
 
 #[tauri::command]
-pub async fn start_download(url: String, pool: State<'_, SqlitePool>) -> Result<CommandResponse<i32>, String> {
+pub async fn start_download(
+    url: String,
+    pool: State<'_, SqlitePool>,
+) -> Result<CommandResponse<i32>, String> {
     // Basic fallback values for scaffold. Usually these come from the URL Analyzer.
     let file_name = "downloaded_file.tmp";
     let file_path = format!("/tmp/{}", file_name);
     let total_size = 0; // Unknown at this stage
 
-    match crate::database::repository::DownloadRepository::create_download(&pool, &url, file_name, &file_path, total_size).await {
+    match crate::database::repository::DownloadRepository::create_download(
+        &pool, &url, file_name, &file_path, total_size,
+    )
+    .await
+    {
         Ok(id) => Ok(CommandResponse {
             success: true,
             data: Some(id),
@@ -27,33 +34,75 @@ pub async fn start_download(url: String, pool: State<'_, SqlitePool>) -> Result<
 }
 
 #[tauri::command]
-pub async fn pause_download(id: i32, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
-    Ok(CommandResponse { success: true, data: None, message: Some(format!("Paused download {}", id)) })
+pub async fn pause_download(
+    id: i32,
+    pool: State<'_, SqlitePool>,
+) -> Result<CommandResponse<String>, String> {
+    Ok(CommandResponse {
+        success: true,
+        data: None,
+        message: Some(format!("Paused download {}", id)),
+    })
 }
 
 #[tauri::command]
-pub async fn resume_download(id: i32, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
-    Ok(CommandResponse { success: true, data: None, message: Some(format!("Resumed download {}", id)) })
+pub async fn resume_download(
+    id: i32,
+    pool: State<'_, SqlitePool>,
+) -> Result<CommandResponse<String>, String> {
+    Ok(CommandResponse {
+        success: true,
+        data: None,
+        message: Some(format!("Resumed download {}", id)),
+    })
 }
 
 #[tauri::command]
-pub async fn cancel_download(id: i32, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
-    Ok(CommandResponse { success: true, data: None, message: Some(format!("Canceled download {}", id)) })
+pub async fn cancel_download(
+    id: i32,
+    pool: State<'_, SqlitePool>,
+) -> Result<CommandResponse<String>, String> {
+    Ok(CommandResponse {
+        success: true,
+        data: None,
+        message: Some(format!("Canceled download {}", id)),
+    })
 }
 
 #[tauri::command]
-pub async fn restart_download(id: i32, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
-    Ok(CommandResponse { success: true, data: None, message: Some(format!("Restarted download {}", id)) })
+pub async fn restart_download(
+    id: i32,
+    pool: State<'_, SqlitePool>,
+) -> Result<CommandResponse<String>, String> {
+    Ok(CommandResponse {
+        success: true,
+        data: None,
+        message: Some(format!("Restarted download {}", id)),
+    })
 }
 
 #[tauri::command]
-pub async fn delete_download(id: i32, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
-    Ok(CommandResponse { success: true, data: None, message: Some(format!("Deleted download {}", id)) })
+pub async fn delete_download(
+    id: i32,
+    pool: State<'_, SqlitePool>,
+) -> Result<CommandResponse<String>, String> {
+    Ok(CommandResponse {
+        success: true,
+        data: None,
+        message: Some(format!("Deleted download {}", id)),
+    })
 }
 
 #[tauri::command]
-pub async fn verify_download(id: i32, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
-    Ok(CommandResponse { success: true, data: None, message: Some(format!("Verified download {}", id)) })
+pub async fn verify_download(
+    id: i32,
+    pool: State<'_, SqlitePool>,
+) -> Result<CommandResponse<String>, String> {
+    Ok(CommandResponse {
+        success: true,
+        data: None,
+        message: Some(format!("Verified download {}", id)),
+    })
 }
 
 #[tauri::command]

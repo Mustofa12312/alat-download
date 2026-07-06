@@ -3,7 +3,11 @@ use tokio::process::Command;
 pub struct Merger;
 
 impl Merger {
-    pub async fn merge_video_audio(video_path: &str, audio_path: &str, output_path: &str) -> Result<(), String> {
+    pub async fn merge_video_audio(
+        video_path: &str,
+        audio_path: &str,
+        output_path: &str,
+    ) -> Result<(), String> {
         let output = Command::new("ffmpeg")
             .arg("-y") // Overwrite
             .arg("-i")

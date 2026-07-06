@@ -1,5 +1,5 @@
-use sqlx::SqlitePool;
 use super::models::DownloadRecord;
+use sqlx::SqlitePool;
 
 pub struct DownloadRepository;
 
@@ -49,11 +49,7 @@ impl DownloadRepository {
         Ok(())
     }
 
-    pub async fn update_status(
-        pool: &SqlitePool,
-        id: i32,
-        status: i32,
-    ) -> Result<(), sqlx::Error> {
+    pub async fn update_status(pool: &SqlitePool, id: i32, status: i32) -> Result<(), sqlx::Error> {
         sqlx::query(
             r#"
             UPDATE downloads 
@@ -70,9 +66,10 @@ impl DownloadRepository {
     }
 
     pub async fn get_all(pool: &SqlitePool) -> Result<Vec<DownloadRecord>, sqlx::Error> {
-        let rows = sqlx::query_as::<_, DownloadRecord>("SELECT * FROM downloads ORDER BY created_at DESC")
-            .fetch_all(pool)
-            .await?;
+        let rows =
+            sqlx::query_as::<_, DownloadRecord>("SELECT * FROM downloads ORDER BY created_at DESC")
+                .fetch_all(pool)
+                .await?;
 
         Ok(rows)
     }
@@ -82,7 +79,7 @@ impl DownloadRepository {
             .bind(id)
             .execute(pool)
             .await?;
-            
+
         Ok(())
     }
 }

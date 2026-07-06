@@ -1,5 +1,5 @@
-use tokio::process::Command;
 use serde_json::Value;
+use tokio::process::Command;
 
 pub struct Extractor;
 
@@ -20,8 +20,8 @@ impl Extractor {
         }
 
         let json_str = String::from_utf8_lossy(&output.stdout);
-        let parsed: Value = serde_json::from_str(&json_str)
-            .map_err(|e| format!("Failed to parse JSON: {}", e))?;
+        let parsed: Value =
+            serde_json::from_str(&json_str).map_err(|e| format!("Failed to parse JSON: {}", e))?;
 
         Ok(parsed)
     }

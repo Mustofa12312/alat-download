@@ -16,6 +16,10 @@ export default function Dashboard() {
     if (mb >= 1) return `${mb.toFixed(2)} MB/s`;
     return `${(bytesPerSec / 1024).toFixed(2)} KB/s`;
   };
+
+  return (
+    <div className="p-8 h-full flex flex-col">
+      <div className="mb-8">
         <h1 className="text-2xl font-bold text-textPrimary">Dashboard</h1>
         <p className="text-textSecondary mt-1">Welcome to Velocity Download Manager</p>
       </div>
