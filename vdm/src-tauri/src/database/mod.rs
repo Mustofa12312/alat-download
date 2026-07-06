@@ -1,6 +1,7 @@
 use sqlx::{sqlite::SqliteConnectOptions, SqlitePool};
 use std::path::PathBuf;
 use std::str::FromStr;
+use tauri::Manager;
 
 pub mod models;
 pub mod repository;
