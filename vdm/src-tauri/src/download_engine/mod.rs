@@ -7,3 +7,4 @@ pub mod retry_engine;
 pub mod buffer_manager;
 pub mod disk_writer;
 pub mod integrity_checker;
+pub mod worker;

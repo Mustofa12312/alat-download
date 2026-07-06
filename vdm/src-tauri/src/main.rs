@@ -3,6 +3,7 @@
 mod database;
 mod commands;
 mod download_engine;
+mod intelligence;
 
 use tauri::Manager;
 

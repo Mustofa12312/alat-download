@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Velocity Download Manager Integration",
+  "version": "1.0.0",
+  "description": "Integration with Velocity Download Manager to capture downloads and detect videos.",
+  "permissions": [
+    "downloads",
+    "downloads.shelf",
+    "nativeMessaging",
+    "contextMenus",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/detector.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "VDM Extension"
+  }
+}
