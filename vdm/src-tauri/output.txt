@@ -1,0 +1,266 @@
+    Checking vdm v0.1.0 (/home/mustofa/Music/gabut/idm/vdm/src-tauri)
+error: OUT_DIR env var is not set, do you have a build script?
+  --> src/main.rs:33:14
+   |
+33 |         .run(tauri::generate_context!())
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: this error originates in the macro `tauri::generate_context` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused import: `Deserialize`
+ --> src/commands/download.rs:1:13
+  |
+1 | use serde::{Deserialize, Serialize};
+  |             ^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `sqlx::SqlitePool`
+ --> src/commands/file.rs:2:5
+  |
+2 | use sqlx::SqlitePool;
+  |     ^^^^^^^^^^^^^^^^
+
+warning: unused import: `tauri::State`
+ --> src/commands/file.rs:3:5
+  |
+3 | use tauri::State;
+  |     ^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+ --> src/download_engine/worker.rs:7:5
+  |
+7 | use std::sync::Arc;
+  |     ^^^^^^^^^^^^^^
+
+warning: unused import: `std::sync::Arc`
+  --> src/download_engine/mod.rs:13:5
+   |
+13 | use std::sync::Arc;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused import: `Manager`
+  --> src/download_engine/mod.rs:14:33
+   |
+14 | use tauri::{AppHandle, Emitter, Manager};
+   |                                 ^^^^^^^
+
+warning: unused variable: `pool`
+  --> src/commands/download.rs:39:5
+   |
+39 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `pool`
+  --> src/commands/download.rs:51:5
+   |
+51 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/download.rs:63:5
+   |
+63 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/download.rs:75:5
+   |
+75 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/download.rs:87:5
+   |
+87 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/download.rs:99:5
+   |
+99 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+ --> src/commands/notification.rs:7:5
+  |
+7 |     pool: State<'_, SqlitePool>,
+  |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `id`
+  --> src/commands/notification.rs:18:5
+   |
+18 |     id: i32,
+   |     ^^ help: if this is intentional, prefix it with an underscore: `_id`
+
+warning: unused variable: `pool`
+  --> src/commands/notification.rs:19:5
+   |
+19 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/notification.rs:30:5
+   |
+30 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+ --> src/commands/queue.rs:8:5
+  |
+8 |     pool: State<'_, SqlitePool>,
+  |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/queue.rs:20:5
+   |
+20 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/queue.rs:33:5
+   |
+33 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/queue.rs:43:26
+   |
+43 | pub async fn clear_queue(pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
+   |                          ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/queue.rs:52:26
+   |
+52 | pub async fn start_queue(pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
+   |                          ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/queue.rs:61:26
+   |
+61 | pub async fn pause_queue(pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
+   |                          ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+ --> src/commands/scheduler.rs:9:5
+  |
+9 |     pool: State<'_, SqlitePool>,
+  |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `task`
+  --> src/commands/scheduler.rs:21:5
+   |
+21 |     task: String,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_task`
+
+warning: unused variable: `pool`
+  --> src/commands/scheduler.rs:22:5
+   |
+22 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/scheduler.rs:34:5
+   |
+34 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/scheduler.rs:46:5
+   |
+46 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/scheduler.rs:58:5
+   |
+58 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+ --> src/commands/settings.rs:6:27
+  |
+6 | pub async fn get_settings(pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
+  |                           ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `key`
+  --> src/commands/settings.rs:16:5
+   |
+16 |     key: String,
+   |     ^^^ help: if this is intentional, prefix it with an underscore: `_key`
+
+warning: unused variable: `value`
+  --> src/commands/settings.rs:17:5
+   |
+17 |     value: String,
+   |     ^^^^^ help: if this is intentional, prefix it with an underscore: `_value`
+
+warning: unused variable: `pool`
+  --> src/commands/settings.rs:18:5
+   |
+18 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/settings.rs:29:5
+   |
+29 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `path`
+  --> src/commands/settings.rs:40:5
+   |
+40 |     path: String,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_path`
+
+warning: unused variable: `pool`
+  --> src/commands/settings.rs:41:5
+   |
+41 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `path`
+  --> src/commands/settings.rs:52:5
+   |
+52 |     path: String,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_path`
+
+warning: unused variable: `pool`
+  --> src/commands/settings.rs:53:5
+   |
+53 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+ --> src/commands/statistics.rs:7:5
+  |
+7 |     pool: State<'_, SqlitePool>,
+  |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: unused variable: `pool`
+  --> src/commands/statistics.rs:18:5
+   |
+18 |     pool: State<'_, SqlitePool>,
+   |     ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+
+warning: variable `downloaded_in_segment` is assigned to, but never used
+  --> src/download_engine/worker.rs:77:13
+   |
+77 |         let mut downloaded_in_segment = 0;
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: consider using `_downloaded_in_segment` instead
+
+warning: value assigned to `downloaded_in_segment` is never read
+   --> src/download_engine/worker.rs:106:13
+    |
+106 |             downloaded_in_segment += chunk_len;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: `vdm` (bin "vdm") generated 41 warnings
+error: could not compile `vdm` (bin "vdm") due to 1 previous error; 41 warnings emitted
