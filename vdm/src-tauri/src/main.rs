@@ -4,6 +4,7 @@ mod database;
 mod commands;
 mod download_engine;
 mod intelligence;
+pub mod events;
 
 use tauri::Manager;
 

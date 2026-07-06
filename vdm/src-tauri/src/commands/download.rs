@@ -48,3 +48,19 @@ pub async fn delete_download(id: i32, pool: State<'_, SqlitePool>) -> Result<Com
 pub async fn verify_download(id: i32, pool: State<'_, SqlitePool>) -> Result<CommandResponse<String>, String> {
     Ok(CommandResponse { success: true, data: None, message: Some(format!("Verified download {}", id)) })
 }
+
+#[tauri::command]
+pub async fn analyze_video(url: String) -> Result<CommandResponse<String>, String> {
+    match crate::video_engine::extractor::Extractor::analyze_url(&url).await {
+        Ok(json_data) => Ok(CommandResponse {
+            success: true,
+            data: Some(json_data.to_string()),
+            message: Some("Video analyzed successfully".into()),
+        }),
+        Err(e) => Ok(CommandResponse {
+            success: false,
+            data: None,
+            message: Some(e),
+        }),
+    }
+}

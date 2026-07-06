@@ -2012,3 +2012,216 @@ Dashboard & Notifications
 - Diagnostics mampu mendeteksi masalah utama pada jaringan, server, dan sistem.
 - Crash Recovery berhasil memulihkan sesi download yang dapat dipulihkan.
 - Monitoring tetap ringan dan tidak memengaruhi kecepatan download.
+# PART IX — Testing
+
+---
+
+# 60. Unit Testing
+
+## Overview
+
+Unit Testing memastikan setiap modul Download Engine bekerja secara independen sesuai spesifikasi.
+
+### Tested Modules
+
+* URL Analyzer
+* Connection Manager
+* Segment Manager
+* Download Worker
+* Buffer Manager
+* Disk Writer
+* Resume Engine
+* Retry Engine
+* Download Validator
+* Checksum Verification
+
+### Objectives
+
+* Validasi logika bisnis.
+* Mendeteksi bug sejak awal.
+* Memastikan hasil konsisten.
+* Mempermudah refactoring.
+
+### Target
+
+* Code Coverage ≥ 90%
+
+---
+
+# 61. Integration Testing
+
+## Overview
+
+Integration Testing memverifikasi komunikasi antar modul Download Engine dan modul lain dalam VDM.
+
+### Integration Scenarios
+
+* Download Engine ↔ Queue Manager
+* Download Engine ↔ Scheduler
+* Download Engine ↔ Video Engine
+* Download Engine ↔ Torrent Engine
+* Download Engine ↔ Browser Extension
+* Download Engine ↔ Database
+* Download Engine ↔ Logging System
+* Download Engine ↔ Notification System
+
+### Validation
+
+* Event Bus
+* IPC Communication
+* Data Consistency
+* Error Propagation
+* Recovery Process
+
+---
+
+# 62. Stress Testing
+
+## Overview
+
+Stress Testing memastikan Download Engine tetap stabil pada beban ekstrem.
+
+### Test Scenarios
+
+* 100 Download Bersamaan
+* File > 100 GB
+* 10.000 Queue Item
+* 1.000 Segment Aktif
+* Jaringan Tidak Stabil
+* Putus Sambung Internet Berulang
+* Penyimpanan Hampir Penuh
+
+### Success Criteria
+
+* Tidak crash.
+* Tidak terjadi memory leak.
+* Resume tetap berfungsi.
+* Queue tetap konsisten.
+
+---
+
+# 63. Benchmark
+
+## Benchmark Targets
+
+| Metric           |   Target |
+| ---------------- | -------: |
+| Engine Startup   | < 100 ms |
+| URL Analysis     |  < 50 ms |
+| Connection Setup | < 200 ms |
+| Progress Update  | < 100 ms |
+| Resume Detection | < 100 ms |
+| Retry Decision   |  < 50 ms |
+| Queue Processing |  < 20 ms |
+
+### Resource Targets
+
+| Resource       |   Target |
+| -------------- | -------: |
+| CPU Idle       |     < 2% |
+| CPU Active     |    < 20% |
+| RAM Idle       | < 100 MB |
+| RAM Heavy Load | < 500 MB |
+
+### Benchmark Goals
+
+* Kecepatan stabil.
+* Penggunaan resource efisien.
+* Tidak ada bottleneck yang signifikan.
+
+---
+
+# 64. Acceptance Criteria
+
+Download Engine dinyatakan siap digunakan apabila:
+
+* Seluruh Unit Test lulus.
+* Seluruh Integration Test lulus.
+* Seluruh Stress Test lulus.
+* Target Benchmark tercapai.
+* Resume bekerja pada server yang mendukung.
+* Retry berjalan sesuai strategi yang ditentukan.
+* Checksum Verification berhasil.
+* Tidak ditemukan data corruption.
+* Tidak terjadi memory leak setelah pengujian jangka panjang.
+* Engine tetap stabil saat menangani banyak download secara bersamaan.
+
+---
+
+# 65. Appendix
+
+## Test Environment
+
+### Operating System
+
+* Windows 10
+* Windows 11
+
+### Network Conditions
+
+* LAN
+* Wi-Fi
+* Mobile Hotspot
+* Bandwidth Rendah
+* Bandwidth Tinggi
+* Latensi Tinggi
+* Packet Loss
+
+### Storage Devices
+
+* HDD
+* SATA SSD
+* NVMe SSD
+* External SSD
+* External HDD
+
+### Supported Protocols
+
+* HTTP
+* HTTPS
+* FTP
+* SFTP
+* HTTP/2
+* HTTP/3
+
+---
+
+# Test Workflow
+
+```text
+Unit Test
+     │
+     ▼
+Integration Test
+     │
+     ▼
+Performance Test
+     │
+     ▼
+Stress Test
+     │
+     ▼
+Benchmark
+     │
+     ▼
+Acceptance Test
+     │
+     ▼
+Release
+```
+
+---
+
+# Testing Rules
+
+* Seluruh pengujian dijalankan secara otomatis melalui CI/CD bila memungkinkan.
+* Benchmark dilakukan pada perangkat kelas menengah dan kelas tinggi.
+* Hasil pengujian harus dapat direproduksi.
+* Setiap bug kritis wajib diperbaiki sebelum rilis.
+* Perubahan pada Download Engine harus disertai pengujian regresi.
+
+---
+
+# End of Download Engine Specification
+
+Dokumen ini menjadi referensi utama implementasi Download Engine VDM. Seluruh perubahan pada arsitektur, algoritma, optimasi performa, maupun strategi download harus mengikuti spesifikasi yang telah ditetapkan dalam dokumen ini.
